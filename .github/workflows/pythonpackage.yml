@@ -35,3 +35,8 @@ jobs:
         python setup.py develop
         pytest --cov-report xml --cov=calculus/ tests/
         sed -i 's/\/home\/runner\/work\/demo-devops-2\/demo-devops-2/\./g' coverage.xml
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
